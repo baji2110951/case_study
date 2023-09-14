@@ -51,6 +51,7 @@ pipeline {
             steps {
                 dir('scripts'){
                     sh 'sudo chmod 755 get_public_ip.sh'
+                    sh 'sed -i 's/\r$//' get_public_ip.sh'
                 }
                 sh ('/bin/bash scripts/get_public_ip.sh')
             }
