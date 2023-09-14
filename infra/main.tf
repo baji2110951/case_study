@@ -53,8 +53,7 @@ resource "tls_private_key" "ec2key" {
 
 resource "local_file" "ec2keyprivate" {
     content = tls_private_key.ec2key.private_key_pem
-    filename = "ec2key.pem"
-    file_permission = "0600"
+    filename = "ec2key"
 }
 
 resource "aws_key_pair" "ec2instancekey" {
