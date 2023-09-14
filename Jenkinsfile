@@ -49,6 +49,9 @@ pipeline {
         stage('Get Instance Public Ip') {
             when { expression { params.action == 'apply' } }
             steps {
+                dir('script'){
+                    sh 'sudo chmod 755 get_public_ip.sh'
+                }
                 sh ('/bin/bash scripts/get_public_ip.sh')
             }
         }
