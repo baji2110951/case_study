@@ -1,0 +1,11 @@
+---
+  - name: "Install Dependencies"
+    hosts: web
+    become: yes
+    tasks:
+       - name: "Install application dependencies"
+         yum:
+           name:
+             - php
+             - php-mysql
+           state: present

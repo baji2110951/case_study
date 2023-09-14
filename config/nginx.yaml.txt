@@ -1,0 +1,19 @@
+---
+  - name: Install nginx
+    hosts: web
+    become: yes
+    tasks:
+      - name: update
+        command: yum -y update
+      - name: Install nginx
+        command: amazon-linux-extras install -y nginx1
+      - name: copy nginx config
+        copy:
+          src: nginx.conf
+          dest: /etc/nginx/nginx.conf
+          force: true
+      - name: Start nginx
+        systemd:
+          name: nginx
+          state: started
+          enabled: yes
