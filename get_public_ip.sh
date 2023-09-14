@@ -11,4 +11,4 @@ echo "Assign public Ip In Ansible host file"
 
 sed -i "s/PUBLIC_IP_1/$PUBLIC_IP/g" ../config/hosts
 
-sed -i "s/PUBLIC_IP_1/$PUBLIC_IP/g" ../infra/login.sh
+sed -i "s/PUBLIC_IP_1/$PUBLIC_IP/g" ../scripts/login.sh
