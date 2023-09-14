@@ -1,5 +1,4 @@
 #!/bin/bash
-
 pwd
 cd infra
 INSTANCE_ID=$(terraform output -raw ec2_instance_id)
