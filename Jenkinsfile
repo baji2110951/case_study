@@ -49,7 +49,7 @@ pipeline {
         stage('Get Instance Public Ip') {
             when { expression { params.action == 'apply' } }
             steps {
-                sh ('/bin/sh scripts/get_public_ip.sh')
+                sh ('/bin/bassh scripts/get_public_ip.sh')
             }
         }
 
