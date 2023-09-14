@@ -2,7 +2,7 @@
 pwd
 cd infra
 INSTANCE_ID=$(terraform output -raw ec2_instance_id)
-PUBLIC_IP=$(terraform output -raw ec2_public_ip)
+PUBLIC_IP=$(terraform output ec2_public_ip)
 
 echo $INSTANCE_ID
 echo $PUBLIC_IP
