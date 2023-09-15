@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Infrastructure Deploy') {
+        stage('Infrastructure Deploy using parameter action') {
             steps {
                 script {
                     if (params.action == 'apply') {
@@ -46,14 +46,14 @@ pipeline {
 
         }
 
-        stage('Get Instance Public Ip') {
+        stage('Get Instance Public Ip address') {
             when { expression { params.action == 'apply' } }
             steps {
                 sh ('/bin/sh get_public_ip.sh')
             }
         }
 
-        stage('Ansible') {
+        stage('configuration using Ansible') {
             when { expression { params.action == 'apply' } }
             steps {
                 echo "Configuring Application Server"
