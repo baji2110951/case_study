@@ -1,6 +1,6 @@
 [web]
-PUBLIC_IP
+$PUBLIC_IP
 [app]
-PUBLIC_IP
+$PUBLIC_IP
 [db]
-PUBLIC_IP
+$PUBLIC_IP
