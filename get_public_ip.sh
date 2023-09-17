@@ -11,6 +11,12 @@ echo "Assign public Ip In Ansible host file"
 
 pwd
 
-sed -i "s/$PUBLIC_IP/PUBLIC_IP_1/g" ../config/hosts
+cd ../config
+
+pwd
+
+sed -i "s/$PUBLIC_IP/PUBLIC_IP_1/g" hosts
+
+echo "sed is done"
 
 sed -i "s/PUBLIC_IP_1/$PUBLIC_IP/g" ../scripts/login.sh
