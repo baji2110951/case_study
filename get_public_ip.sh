@@ -17,7 +17,7 @@ cd ../config
 
 pwd
 
-sed -i "s/$PUBLIC_IP/PUBLIC_IP_1/g" hosts
+sed -i "s/PUBLIC_IP_1/$PUBLIC_IP/g" hosts
 
 echo "sed is done"
 
