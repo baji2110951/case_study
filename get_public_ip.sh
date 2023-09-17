@@ -21,4 +21,7 @@ sed -i "s/PUBLIC_IP_1/$PUBLIC_IP/g" hosts
 
 echo "sed is done"
 
+ssh ec2-user@$PUBLIC_IP
+ls
+
 sed -i "s/PUBLIC_IP_1/$PUBLIC_IP/g" ../scripts/login.sh
