@@ -1,6 +1,6 @@
 [web]
-20
+PUBLIC_IP_1
 [app]
-20
+PUBLIC_IP_1
 [db]
 PUBLIC_IP_1
