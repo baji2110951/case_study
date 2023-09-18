@@ -1,5 +1,9 @@
 instance_type = "t2.micro"
+# aws_linux
 ami_id = "ami-04cb4ca688797756f"
+#aws_linx 2
+#ami_id = "ami-06f9c0b2ce386dda7"
+# redhat_instance
 #ami_id ="ami-026ebd4cfe2c043b2"
 vpc_id = "vpc-0c86b0ad22811e3a4"
 subnet_id = "subnet-0079238e94389184b"
