@@ -13,7 +13,7 @@
           state: started
           enabled: yes
       - name: "Create database"
-        mysql_db:
+        mariadb-server:
           name: "testdb"
       - name: "Provide access to the database"
         mysql_user:
