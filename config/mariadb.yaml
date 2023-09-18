@@ -13,7 +13,7 @@
         systemd:
           name: mariadb
           state: started
-          enabled: yes
+          enabled: true
       - name: "Create database"
         mysql_db:
           name: "testjava"
