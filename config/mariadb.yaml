@@ -12,10 +12,6 @@
           name: mariadb
           state: started
           enabled: yes
-      - name: "Create database"
-        mysql_db:
-          name: testdb
-          state: present
       - name: "Provide access to the database"
         mysql_user:
           name: "testjava"
