@@ -14,8 +14,7 @@
           enabled: yes
       - name: "Create database"
         mysql_db:
-          name: "testjava"
-          state: present
+          name: "testdb"
       - name: "Provide access to the database"
         mysql_user:
           name: "testjava"
