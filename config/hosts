@@ -1,6 +1,6 @@
 [web]
-PUBLIC_IP_1
+PUBLIC_IP_1 ansible_ssh_user=root   ansible_ssh_pass=redhat
 [app]
-PUBLIC_IP_1
+PUBLIC_IP_1 ansible_ssh_user=root   ansible_ssh_pass=redhat
 [db]
-PUBLIC_IP_1
+PUBLIC_IP_1 ansible_ssh_user=root   ansible_ssh_pass=redhat
