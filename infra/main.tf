@@ -22,7 +22,7 @@ variable "subnet_id" {
 variable "disk_size" {
     type = number
     description = "input disk size for ec2 instance"
-    default = "8"
+    default = "10"
 }
 
 variable "server_name" {
