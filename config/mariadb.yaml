@@ -14,6 +14,9 @@
           name: mariadb
           state: started
           enabled: yes
+      - name: "Create database"
+        mysql_db:
+          name: "testjava"
       - name: "Provide access to the database"
         mysql_user:
           name: "testjava"
@@ -29,8 +32,8 @@
 
       - name: "Run sample data script"
         mysql_db:
+          state: import
           name: "testdb"
-          state: present
           login_user: "testjava"
           login_password: "testjava"
           login_unix_socket: /var/lib/mysql/mysql.sock
