@@ -6,7 +6,7 @@
       - name: update
         command: yum -y update
       - name: Install nginx
-        command: amazon-linux-extras install -y nginx1
+        command: amazon-linux-extras install -y nginx1.12
       - name: copy nginx config
         copy:
           src: nginx.conf
