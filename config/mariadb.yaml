@@ -5,7 +5,9 @@
     tasks:
       - name: "Install Maria DB"
         yum:
-          name: mariadb-server
+          name:
+           - mariadb-server
+           - python3-PyMySQL
           state: present
       - name: "Start Maria DB"
         systemd:
