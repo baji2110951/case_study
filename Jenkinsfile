@@ -59,10 +59,11 @@ pipeline {
                 echo "Configuring Application Server"
                 echo "Running Ansible Playbook"
                 sh 'pwd'
-                ansiblePlaybook become: true, extras: '--private-key /var/lib/jenkins/workspace/hi/infra/ec2key', installation: 'ansible', inventory: '/var/lib/jenkins/workspace/hi/config/hosts', playbook: '/var/lib/jenkins/workspace/hi/config/dependencies.yaml'
+                ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/dependencies.yaml'
                 ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/nginx.yaml'
-                ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/mariadb.yaml'
+   
                 ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/tomcat.yaml'
+                ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/mariadb.yaml'
             }
         }
     }
