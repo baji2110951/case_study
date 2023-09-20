@@ -14,9 +14,7 @@
           name: mariadb
           state: started
           enabled: true
-      - name: "Create database"
-        mysql_db:
-          name: "testdb"
+          
       - name: "Provide access to the database"
         mysql_user:
           name: "testjava"
@@ -32,12 +30,18 @@
 
       - name: "Run sample data script"
         mysql_db:
-          state: import
           name: "testdb"
+          state: present
           login_user: "testjava"
           login_password: "testjava"
           login_unix_socket: /var/lib/mysql/mysql.sock
+      - name: insert adat in to DB
+        mysql_db:
+          name: "testdb"
+          state: import
           target: "/tmp/db_script.sql"
+          login_user: "testjava"
+          login_password: "testjava"
         when: flag_file_status.stat.exists == false
 
       - name: "Create flag file"
