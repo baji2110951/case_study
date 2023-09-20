@@ -2,7 +2,7 @@
 - name: Download Tomcat from tomcat.apache.org
   hosts: app
   vars:
-    download_url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.79/bin/apache-tomcat-9.0.79.tar.gz
+    download_url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.83/bin/apache-tomcat-8.5.83.tar.gz
   tasks:
    - name: Download Open JDK
      become: yes
@@ -39,7 +39,7 @@
    - name: Download Tomcat using unarchive
      become: yes
      unarchive:
-       src: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.79/bin/apache-tomcat-9.0.79.tar.gz
+       src: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.83/bin/apache-tomcat-8.5.83.tar.gz
        dest: /opt/tomcat
        mode: 0755
        remote_src: yes
