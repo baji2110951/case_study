@@ -3,40 +3,40 @@
     hosts: db
     become: yes
     tasks:
-      - name: "Install Maria DB"
-        yum:
-          name: mariadb-server
-          state: present
-      - name: "Start Maria DB"
-        systemd:
-          name: mariadb
-          state: started
-          enabled: yes
-      - name: "Create database"
-        community.mysql.mysql_db:
-          name: "testdb"
-      - name: "Provide access to the database"
-        community.mysql.mysql_user:
-          name: "testjava"
-          password: "testjava"
-          host: localhost
-          priv: "*.*:ALL"
-          state: present
-      - name: "Check script file flag status"
-        stat:
-          path: "db_script_flag"
-        register: flag_file_status
-      - name: "Run sample data script"
-        community.mysql.mysql_db:
-          state: import
-          name: "testdb"
-          login_user: "testjava"
-          login_password: "testjava"
-          login_unix_socket: /var/lib/mysql/mysql.sock
-          target: "/tmp/db_script.sql"
-        when: flag_file_status.stat.exists == false
-      - name: "Create flag file"
-        copy:
-          content: "flag file content"
-          dest: "db_script_flag"
-        when: flag_file_status.stat.exists == false
+     - name: "Install Maria DB"
+       yum:
+        name: mariadb-server
+        state: present
+     - name: "Start Maria DB"
+       systemd:
+        name: mariadb
+        state: started
+        enabled: yes
+     - name: "Create database"
+       community.mysql.mysql_db:
+        name: "testdb"
+     - name: "Provide access to the database"
+       community.mysql.mysql_user:
+        name: "testjava"
+        password: "testjava"
+        host: localhost
+        priv: "*.*:ALL"
+        state: present
+     - name: "Check script file flag status"
+       stat:
+        path: "db_script_flag"
+       register: flag_file_status
+     - name: "Run sample data script"
+       community.mysql.mysql_db:
+        state: import
+        name: "testdb"
+        login_user: "testjava"
+        login_password: "testjava"
+        login_unix_socket: /var/lib/mysql/mysql.sock
+        target: "/tmp/db_script.sql"
+       when: flag_file_status.stat.exists == false
+     - name: "Create flag file"
+       copy:
+        content: "flag file content"
+        dest: "db_script_flag"
+       when: flag_file_status.stat.exists == false
