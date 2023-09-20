@@ -3,14 +3,18 @@
     hosts: db
     become: yes
     tasks:
+      - name: add Mariadb repo
+        copy:
+          src: mariadb.repo
+          dest: /etc/yum.repos.d/mariadb.repo
       - name: "Install Maria DB"
-        yum:
+        package:
           name:
-           - mariadb-server
+           - MariaDB-server
            - python3-PyMySQL
           state: present
       - name: "Start Maria DB"
-        systemd:
+        service:
           name: mariadb
           state: started
           enabled: true
