@@ -13,10 +13,10 @@
           state: started
           enabled: yes
       - name: "Create database"
-        mysql_db:
+        community.mysql.mysql_db:
           name: "testdb"
       - name: "Provide access to the database"
-        mysql_user:
+        community.mysql.mysql_user:
           name: "testjava"
           password: "testjava"
           host: localhost
@@ -27,7 +27,7 @@
           path: "db_script_flag"
         register: flag_file_status
       - name: "Run sample data script"
-        mysql_db:
+        community.mysql.mysql_db:
           state: import
           name: "testdb"
           login_user: "testjava"
