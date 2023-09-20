@@ -14,13 +14,15 @@
           name: mariadb
           state: started
           enabled: true
-          
-      - name: "Provide access to the database"
+      - name: Provide access to the database
         mysql_user:
-          name: "testjava"
+          name: "root"
           password: "testjava"
           host: localhost
-          priv: "*.*:ALL"
+          login_user: "root"
+          login_password: "testjava"
+          check_implicit_admin: yes
+          priv: "*.*:ALL,GRANT"
           state: present
 
       - name: "Check script file flag status"
