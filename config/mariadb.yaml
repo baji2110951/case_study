@@ -3,30 +3,24 @@
     hosts: db
     become: yes
     tasks:
-      - name: add Mariadb repo
-        copy:
-          src: mariadb.repo
-          dest: /etc/yum.repos.d/mariadb.repo
       - name: "Install Maria DB"
-        package:
-          name:
-           - MariaDB-server
-           - python3-PyMySQL
+        yum:
+          name: mariadb-server
           state: present
       - name: "Start Maria DB"
-        service:
+        systemd:
           name: mariadb
           state: started
-          enabled: true
-      - name: Provide access to the database
+          enabled: yes
+      - name: "Create database"
+        mysql_db:
+          name: "testjava"
+      - name: "Provide access to the database"
         mysql_user:
-          name: "root"
+          name: "testjava"
           password: "testjava"
           host: localhost
-          login_user: "root"
-          login_password: "testjava"
-          check_implicit_admin: yes
-          priv: "*.*:ALL,GRANT"
+          priv: "*.*:ALL"
           state: present
 
       - name: "Check script file flag status"
@@ -36,18 +30,12 @@
 
       - name: "Run sample data script"
         mysql_db:
+          state: import
           name: "testdb"
-          state: present
           login_user: "testjava"
           login_password: "testjava"
           login_unix_socket: /var/lib/mysql/mysql.sock
-      - name: insert adat in to DB
-        mysql_db:
-          name: "testdb"
-          state: import
           target: "/tmp/db_script.sql"
-          login_user: "testjava"
-          login_password: "testjava"
         when: flag_file_status.stat.exists == false
 
       - name: "Create flag file"
