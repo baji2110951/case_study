@@ -14,7 +14,7 @@
           enabled: yes
       - name: "Create database"
         mysql_db:
-          name: "testjava"
+          name: "testdb"
       - name: "Provide access to the database"
         mysql_user:
           name: "testjava"
@@ -22,12 +22,10 @@
           host: localhost
           priv: "*.*:ALL"
           state: present
-
       - name: "Check script file flag status"
         stat:
           path: "db_script_flag"
         register: flag_file_status
-
       - name: "Run sample data script"
         mysql_db:
           state: import
@@ -37,7 +35,6 @@
           login_unix_socket: /var/lib/mysql/mysql.sock
           target: "/tmp/db_script.sql"
         when: flag_file_status.stat.exists == false
-
       - name: "Create flag file"
         copy:
           content: "flag file content"
