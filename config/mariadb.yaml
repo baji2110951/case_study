@@ -1,35 +1,43 @@
+
 ---
- - name: MariaDB
-   hosts: db
-   gather_facts: true
-   become: true
-   vars:
-    mysql_root_password: "Password1"
-   tasks:
-    - name: install mariadb
-      yum:
-       name:
-         - mariadb-server
-         - python3-PyMySQL
-       state: latest
-    - name: start mariadb
-      service:
-       name: mariadb
-       enabled: true
-       state: started
-    - name: mysql_root_password
-      mysql_user:
-       login_user: root
-       login_password: "{{ mysql_root_password }}"
-       user: root
-       check_implicit_admin: true
-       password: "{{ mysql_root_password }}"
-       host: localhost
-    - name: remove remote root
-      mysql_user:
-       check_implicit_admin: true
-       login_user: root
-       login_password: "{{ mysql_root_password }}"
-       user: root
-       host: "{{ ansible_fqdn }}"
-       state: absent
+  - name: "Install & Configure Maria DB"
+    hosts: db
+    become: yes
+    tasks:
+      - name: "Install Maria DB"
+        yum:
+          name: mariadb-server
+          state: present
+      - name: "Start Maria DB"
+        systemd:
+          name: mariadb
+          state: started
+          enabled: yes
+      - name: "Create database"
+        mysql_db:
+          name: "testjava"
+      - name: "Provide access to the database"
+        mysql_user:
+          name: "testjava"
+          password: "testjava"
+          host: localhost
+          priv: "*.*:ALL"
+          state: present
+      - name: "Check script file flag status"
+        stat:
+          path: "db_script_flag"
+        register: flag_file_status
+      - name: "Run sample data script"
+        mysql_db:
+          state: import
+          name: "testdb"
+          login_user: "testjava"
+          login_password: "testjava"
+          login_unix_socket: /var/lib/mysql/mysql.sock
+          target: "/tmp/db_script.sql"
+        when: flag_file_status.stat.exists == false
+      - name: "Create flag file"
+        copy:
+          content: "flag file content"
+          dest: "db_script_flag"
+        when: flag_file_status.stat.exists == false
