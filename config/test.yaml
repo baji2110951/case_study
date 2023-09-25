@@ -16,7 +16,7 @@
           name: mariadb
           state: started
           enabled: yes
-      - name: "pymql"
+      - name:  add python-mysqldb
         pip:
           name: python-mysqldb
           state: yes
