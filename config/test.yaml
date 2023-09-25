@@ -17,5 +17,5 @@
           state: started
           enabled: yes
       - name: "Create database"
-        mysql:
+        mysql_db:
           name: "test-1"
