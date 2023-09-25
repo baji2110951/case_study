@@ -17,7 +17,7 @@
           state: started
           enabled: yes
       - name: Remove the test database
-        mysql_db:  
+        database:  
           name: test
           login_user: root
           login_unix_socket: "/var/lib/mysql/mysql.sock"
