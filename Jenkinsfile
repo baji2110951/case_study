@@ -61,7 +61,7 @@ pipeline {
                 sh 'pwd'
                 ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/dependencies.yaml'
                 ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/nginx.yaml'
-                ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/mariadb.yaml'
+                ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/test.yaml'
                 ansiblePlaybook become: true, extras: '--private-key infra/ec2key', installation: 'ansible', inventory: 'config/hosts', playbook: 'config/tomcat.yaml'                
             }
         }
