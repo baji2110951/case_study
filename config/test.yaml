@@ -27,4 +27,4 @@
           
       - name: "Create database"
         mysql:
-          name: "test"
+          name: "test-1"
