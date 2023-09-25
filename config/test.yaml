@@ -20,12 +20,8 @@
         pip:
           name: python-mysqldb
           state: yes
-      - name: Remove the test database
-        mysql_user:  
-          name: test
-          login_user: root
-          login_unix_socket: "/var/lib/mysql/mysql.sock"
-          state: absent
       - name: "Create database"
         mysql_db:
+          login_user: "root"
+          login_password: "password"
           name: "test-1"
