@@ -5,12 +5,12 @@
     tasks:
       - name: "Install Maria DB"
         yum:
-          name: mariadb-server
-          state: present
-      - name: "Start Maria DB"
-        systemd:
           name:
            - mariadb
            - mariadb-server
+          state: present
+      - name: "Start Maria DB"
+        systemd:
+          name: mariadb
           state: started
           enabled: yes
