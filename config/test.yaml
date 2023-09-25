@@ -1,0 +1,16 @@
+---
+  - name: "Install & Configure Maria DB"
+    hosts: db
+    become: yes
+    tasks:
+      - name: "Install Maria DB"
+        yum:
+          name: mariadb-server
+          state: present
+      - name: "Start Maria DB"
+        systemd:
+          name:
+           - mariadb
+           - mariadb-server
+          state: started
+          enabled: yes
