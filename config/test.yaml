@@ -18,7 +18,7 @@
           enabled: yes
       - name: "pymql"
         pip:
-          name: pymysql
+          name: python-mysqldb
           state: yes
       - name: Remove the test database
         database:  
