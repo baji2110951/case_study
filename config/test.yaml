@@ -15,5 +15,5 @@
           state: started
           enabled: yes
       - name: "Create database"
-        mysql_db:
+        mysql:
           name: "testjava"
