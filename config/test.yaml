@@ -16,15 +16,6 @@
           name: mariadb
           state: started
           enabled: yes
-      - name: update mysql root password for all root accounts  
-        mysql_user:  
-          name: root    
-          password: "{{ mysql_root_password }}"  
-          login_user: root  
-          login_password: "{{ mysql_root_password }}"  
-          check_implicit_admin: yes  
-          priv: "*.*:ALL,GRANT"
-          
       - name: "Create database"
         mysql:
           name: "test-1"
