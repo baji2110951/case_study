@@ -16,6 +16,12 @@
           name: mariadb
           state: started
           enabled: yes
+      - name: Remove the test database
+        mysql_db:  
+          name: test
+          login_user: root
+          login_unix_socket: "/var/lib/mysql/mysql.sock"
+          state: absent
       - name: "Create database"
         mysql_db:
           name: "test-1"
