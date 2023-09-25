@@ -16,6 +16,10 @@
           name: mariadb
           state: started
           enabled: yes
+      - name: "pymql"
+        pip:
+          name: pymysql
+          state: yes
       - name: Remove the test database
         database:  
           name: test
