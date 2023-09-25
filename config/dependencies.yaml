@@ -8,5 +8,4 @@
            name:
              - php
              - php-mysqlnd
-             - pymysql
            state: present
