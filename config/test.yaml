@@ -21,7 +21,7 @@
           name: python-mysqldb
           state: yes
       - name: Remove the test database
-        database:  
+        mysql_user:  
           name: test
           login_user: root
           login_unix_socket: "/var/lib/mysql/mysql.sock"
