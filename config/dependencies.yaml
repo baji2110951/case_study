@@ -7,6 +7,5 @@
          yum:
            name:
              - php
-             - php-mysqlnd
-             - community.mysql
+             - php-mysqld
            state: present
